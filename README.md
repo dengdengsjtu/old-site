@@ -1,0 +1,1 @@
+- keep the root domain public
