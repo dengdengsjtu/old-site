@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<!-- Head -->
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ubuntu management | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景知识 secure boot 用于防止恶意软件入侵，但其实被微软用作了防止安装双系统，secure boot实际用途不大 primary 和 logical主分区和逻辑分区的区别：主分区用于安装系统 UEFI 与 legacy 区别 UEFI 可以在 BIOS 中改为 legacy    前提概要 电脑类型：UEFI 新式 bios + 双固态硬盘  安装Ubuntu多种硬盘对应情况（这篇文章">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu management">
+<meta property="og:url" content="http://example.com/2023/03/16/Ubuntu-management/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="背景知识 secure boot 用于防止恶意软件入侵，但其实被微软用作了防止安装双系统，secure boot实际用途不大 primary 和 logical主分区和逻辑分区的区别：主分区用于安装系统 UEFI 与 legacy 区别 UEFI 可以在 BIOS 中改为 legacy    前提概要 电脑类型：UEFI 新式 bios + 双固态硬盘  安装Ubuntu多种硬盘对应情况（这篇文章">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/bios_interface.png">
+<meta property="og:image" content="http://example.com/no_ubuntu.png">
+<meta property="article:published_time" content="2023-03-16T12:31:50.000Z">
+<meta property="article:modified_time" content="2023-03-16T14:07:03.756Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/bios_interface.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://dengdengsjtu.github.io/favicon.png">
+  
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.15/css/share.min.css">
+    <style>
+        .hljs-line-numbers {
+            text-align: right;
+            border-right: 1px solid #ccc;
+            color: #999;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <!-- 
+<link rel="stylesheet" href="/css/style.css">
+ -->
+    <!-- 
+<link rel="stylesheet" href="/css/code.css">
+ -->
+    <link rel="stylesheet" href="/css/style.css?version=4-7-02-58" type="text/css">
+    <link rel="stylesheet" href="/css/code.css?version=4-7-02-58" type="text/css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav class="blue darken-3 nav-extended">
+            <div class="nav-wrapper">
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="hide-on-med-and-down">
+                    
+                        <li><a href="/" class="nav-logo">Hexo</a></li>
+                    
+                    
+                    <li><a class="" href="/">Home</a></li>
+                    
+                    <li><a class="" href="/archives">Archives</a></li>
+                    
+                    <li><a class="" href="/categories">Categories</a></li>
+                    
+                    <li><a class="" href="/tags">Tags</a></li>
+                    
+                    <li><a class="" href="/links">Links</a></li>
+                    
+                    <li><a class="" href="/about">About</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+    <ul class="side-nav" id="mobile-demo">
+        
+        <li><a class="" href="/">Home</a></li>
+        
+        <li><a class="" href="/archives">Archives</a></li>
+        
+        <li><a class="" href="/categories">Categories</a></li>
+        
+        <li><a class="" href="/tags">Tags</a></li>
+        
+        <li><a class="" href="/links">Links</a></li>
+        
+        <li><a class="" href="/about">About</a></li>
+        
+    </ul>
+    <!--You have to move ul out to make sure this work in mobile environment-->
+</header>
+
+
+<div class="container">
+      <article class="article-full">
+
+    <!-- Title -->
+    <h2 class="blog-item-title">
+        <a href="/2023/03/16/Ubuntu-management/">
+            Ubuntu management
+        </a>
+    </h2>
+
+    <!-- Date and Author -->
+    <p class="blog-item-meta">
+        Published on 2023 Mar 16 20:31:50
+        
+    
+        </br>
+        Last Updated on 2023 Mar 16 22:07:03
+        
+    </p>
+
+
+    <!-- Content -->
+    <h4 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h4><ul>
+<li>secure boot 用于防止恶意软件入侵，但其实被微软用作了防止安装双系统，secure boot实际用途不大</li>
+<li>primary 和 logical<br>主分区和逻辑分区的区别：主分区用于安装系统</li>
+<li><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1742919663531287416&wfr=spider&for=pc">UEFI 与 legacy 区别</a><ul>
+<li>UEFI 可以在 BIOS 中改为 legacy</li>
+</ul>
+</li>
+</ul>
+<h4 id="前提概要"><a href="#前提概要" class="headerlink" title="前提概要"></a>前提概要</h4><ul>
+<li>电脑类型：UEFI 新式 bios + 双固态硬盘</li>
+</ul>
+<h4 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/masbay/articles/10745170.html">多种硬盘对应情况（这篇文章发布比较早）</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43784003/article/details/116465630">后来发布的总结比较好的一篇文章</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/34223088">进入BIOS</a></p>
+<h4 id="卸载Ubuntu"><a href="#卸载Ubuntu" class="headerlink" title="卸载Ubuntu"></a>卸载Ubuntu</h4><ol>
+<li>删除分给 Ubuntu 的分区<ul>
+<li>直接删除 除&#x2F;efi外 的其他分区</li>
+<li>删除&#x2F;efi分区 <a target="_blank" rel="noopener" href="https://blog.csdn.net/g1027785756/article/details/82999451">卸载依据</a></li>
+</ul>
+</li>
+<li>修改win10启动项<ul>
+<li>我采取的方式<ol>
+<li>进入BIOS界面（如前述链接方法）<ul>
+<li>由于已经删除了&#x2F;efi，而Windows的启动安装到了grub里面，将进入grub，从grub启动Windows <a target="_blank" rel="noopener" href="https://blog.csdn.net/hikkilover/article/details/82290873">用Grub2命令行引导启动Windows10</a>，成功后将进入 <code>BIOS界面</code><br> <img src="/bios_interface.png" alt="BIOS界面"></li>
+<li>将 <code>Windows Boot Manager</code> 移动到最上面，<code>Exit</code> 即可。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>另一种可行的方式 <a target="_blank" rel="noopener" href="https://blog.csdn.net/g1027785756/article/details/82999451">卸载依据</a><ul>
+<li>我在用 我采取的方式 设置成功后尝试了此方式，发现没有出现Ubuntu文件（说明我的方式可行？？）<br>  <img src="/no_ubuntu.png" alt="根据 卸载依据 中的方式没有出现Ubuntu文件"></li>
+</ul>
+</li>
+<li>本机无 参考文章 1 中的 <code>Delete Boot Option</code></li>
+</ul>
+</li>
+</ol>
+<h4 id="安装问题与解决方案"><a href="#安装问题与解决方案" class="headerlink" title="安装问题与解决方案"></a>安装问题与解决方案</h4><ul>
+<li>时间错乱<ul>
+<li>卸载Ubuntu后解决……</li>
+</ul>
+</li>
+</ul>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43784003/article/details/116465075?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-116465075-blog-120721561.pc_relevant_3mothn_strategy_recovery&spm=1001.2101.3001.4242.1&utm_relevant_index=3">卸载依据 2</a>，里面的参考文章不错</li>
+</ol>
+
+
+    <hr/>
+
+    
+        <div class="social-share" data-disabled="weibo,qzone,qq,tencent,douban,linkedin,diandian"></div>
+    
+
+    <div class="blog-post">
+
+    <!--[...]-->
+    
+    <!-- Comments -->
+</div>
+
+    <!-- Tags and Categories links -->
+
+
+</article>
+
+
+</div>
+
+
+<footer class="grey darken-3">
+    <div class="footer-link">
+        
+        
+        
+        
+        
+        
+        
+          <a href="/atom.xml" target="_blank" title="rss_feed"><i class="fa fa-rss fa-2x" aria-hidden="true"></i></a>
+        
+    </div>
+    <div class="footer-ps">
+        <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+            &copy; 2023 <a
+                    
+            > John Doe</a> - Theme <a href="https://github.com/lazzzis/hexo-theme-mls" target="_blank">MLS</a>
+        </p>
+    </div>
+</footer>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.15/js/social-share.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+
+<script src="/js/addition.js"></script>
+
+
+<script src="/js/zooming.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+<script>
+    // https://github.com/srobbin/jquery-backstretch
+    $.backstretch("/css/images/background.jpg?version=4-7-02-58");
+
+    
+
+</script>
+
+
+</body>
+
+</html>

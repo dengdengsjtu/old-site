@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<!-- Head -->
+<head>
+  <meta charset="utf-8">
+  
+  <title>Disk management | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言 此文乃本人经过折腾 linux ubuntu 后，产生了整理磁盘的想法，写下的一篇整理笔记。 安装 or 卸载 ubuntu 部分详见见 Ubuntu management 博客。  背景知识 扩展卷只能向后扩展，注意 C、D盘之间是否有隐藏卷我在安装Linux的时候在 C盘后 分了200Mb用于安装 &#x2F;efi，所以为了扩展 C盘，我先卸载了Ubuntu 不要安装乱七八糟的流氓软件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Disk management">
+<meta property="og:url" content="http://example.com/2023/03/16/Disk-management/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言 此文乃本人经过折腾 linux ubuntu 后，产生了整理磁盘的想法，写下的一篇整理笔记。 安装 or 卸载 ubuntu 部分详见见 Ubuntu management 博客。  背景知识 扩展卷只能向后扩展，注意 C、D盘之间是否有隐藏卷我在安装Linux的时候在 C盘后 分了200Mb用于安装 &#x2F;efi，所以为了扩展 C盘，我先卸载了Ubuntu 不要安装乱七八糟的流氓软件">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-16T12:06:03.000Z">
+<meta property="article:modified_time" content="2023-03-16T13:04:56.760Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://dengdengsjtu.github.io/favicon.png">
+  
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.15/css/share.min.css">
+    <style>
+        .hljs-line-numbers {
+            text-align: right;
+            border-right: 1px solid #ccc;
+            color: #999;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <!-- 
+<link rel="stylesheet" href="/css/style.css">
+ -->
+    <!-- 
+<link rel="stylesheet" href="/css/code.css">
+ -->
+    <link rel="stylesheet" href="/css/style.css?version=4-7-02-58" type="text/css">
+    <link rel="stylesheet" href="/css/code.css?version=4-7-02-58" type="text/css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav class="blue darken-3 nav-extended">
+            <div class="nav-wrapper">
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="hide-on-med-and-down">
+                    
+                        <li><a href="/" class="nav-logo">Hexo</a></li>
+                    
+                    
+                    <li><a class="" href="/">Home</a></li>
+                    
+                    <li><a class="" href="/archives">Archives</a></li>
+                    
+                    <li><a class="" href="/categories">Categories</a></li>
+                    
+                    <li><a class="" href="/tags">Tags</a></li>
+                    
+                    <li><a class="" href="/links">Links</a></li>
+                    
+                    <li><a class="" href="/about">About</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+    <ul class="side-nav" id="mobile-demo">
+        
+        <li><a class="" href="/">Home</a></li>
+        
+        <li><a class="" href="/archives">Archives</a></li>
+        
+        <li><a class="" href="/categories">Categories</a></li>
+        
+        <li><a class="" href="/tags">Tags</a></li>
+        
+        <li><a class="" href="/links">Links</a></li>
+        
+        <li><a class="" href="/about">About</a></li>
+        
+    </ul>
+    <!--You have to move ul out to make sure this work in mobile environment-->
+</header>
+
+
+<div class="container">
+      <article class="article-full">
+
+    <!-- Title -->
+    <h2 class="blog-item-title">
+        <a href="/2023/03/16/Disk-management/">
+            Disk management
+        </a>
+    </h2>
+
+    <!-- Date and Author -->
+    <p class="blog-item-meta">
+        Published on 2023 Mar 16 20:06:03
+        
+    
+        </br>
+        Last Updated on 2023 Mar 16 21:04:56
+        
+    </p>
+
+
+    <!-- Content -->
+    <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><ul>
+<li>此文乃本人经过折腾 linux ubuntu 后，产生了整理磁盘的想法，写下的一篇整理笔记。</li>
+<li>安装 or 卸载 ubuntu 部分详见见 <code>Ubuntu management</code> 博客。</li>
+</ul>
+<h4 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h4><ul>
+<li>扩展卷只能向后扩展，注意 C、D盘之间是否有隐藏卷<br>我在安装Linux的时候在 C盘后 分了200Mb用于安装 &#x2F;efi，所以为了扩展 C盘，我先卸载了Ubuntu</li>
+<li>不要安装乱七八糟的流氓软件，命令行运行 <code>diskpart</code> 足够</li>
+</ul>
+<h4 id="扩展C盘步骤"><a href="#扩展C盘步骤" class="headerlink" title="扩展C盘步骤"></a>扩展C盘步骤</h4><ol>
+<li>确保 C、D盘之间无隐藏卷，通过 <code>磁盘管理</code> 查看即可</li>
+<li>整理D盘<ul>
+<li>压缩D盘，将压缩出来的 <code>未分配空间</code> <code>格式化</code> 后，新建简单卷（假设为F）<ul>
+<li>格式化有无必要：未知</li>
+</ul>
+</li>
+<li>将原D盘部分 <strong><code>复制</code></strong> 到F盘<ul>
+<li>直接移动文件不成功，存在 <code>需要管理员权限</code> <code>文件正在运行</code> 等情况</li>
+<li>不用删软件</li>
+</ul>
+</li>
+<li>格式化原D盘<ul>
+<li>此时先不删除原D盘，否则下一步 将原D盘由逻辑分区转换为主分区 时不显示（只显示已分配的磁盘？？）</li>
+</ul>
+</li>
+<li>将原D盘由逻辑分区转换为主分区 <ul>
+<li><a target="_blank" rel="noopener" href="https://www.disktool.cn/content-center/convert-logical-partition-to-primary-using-diskpart-2111.html">将硬盘分区由逻辑分区转换为主分区</a></li>
+</ul>
+</li>
+<li>删除原D盘</li>
+</ul>
+</li>
+<li>对C盘扩展卷</li>
+<li>修改F盘 <code>盘符</code><ul>
+<li><code>更改驱动器号和路径</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/373270227">从D盘扩展C盘步骤</a></p>
+
+
+    <hr/>
+
+    
+        <div class="social-share" data-disabled="weibo,qzone,qq,tencent,douban,linkedin,diandian"></div>
+    
+
+    <div class="blog-post">
+
+    <!--[...]-->
+    
+    <!-- Comments -->
+</div>
+
+    <!-- Tags and Categories links -->
+
+
+</article>
+
+
+</div>
+
+
+<footer class="grey darken-3">
+    <div class="footer-link">
+        
+        
+        
+        
+        
+        
+        
+          <a href="/atom.xml" target="_blank" title="rss_feed"><i class="fa fa-rss fa-2x" aria-hidden="true"></i></a>
+        
+    </div>
+    <div class="footer-ps">
+        <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+            &copy; 2023 <a
+                    
+            > John Doe</a> - Theme <a href="https://github.com/lazzzis/hexo-theme-mls" target="_blank">MLS</a>
+        </p>
+    </div>
+</footer>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.15/js/social-share.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+
+<script src="/js/addition.js"></script>
+
+
+<script src="/js/zooming.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+<script>
+    // https://github.com/srobbin/jquery-backstretch
+    $.backstretch("/css/images/background.jpg?version=4-7-02-58");
+
+    
+
+</script>
+
+
+</body>
+
+</html>
